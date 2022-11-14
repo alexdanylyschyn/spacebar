@@ -36,8 +36,6 @@ function spacebar:update()
 end
 
 function spacebar:ingest(spaces)
- u.p(spaces)
-
  local title = string.format("%s - %s", spaces['current']['title'], tostring(spaces['current']['windows']))
  self.menubar:setTitle(title)
 
