@@ -15,10 +15,11 @@ end  -- }}}
 local function spaceMapper(yabaiSpaces)
   local res = {['current'] = {}, ['others'] = {}}
   for _,space in pairs(yabaiSpaces or {}) do
+    local windows = u.filter(space.windows, function(x) return x['root-window'] end)
     if space['has-focus'] then
-      res['current'] = { ['title'] = space.label, ['windows'] = u.length(space.windows) }
+      res['current'] = { ['title'] = space.label, ['windows'] = u.length(windows) }
     else
-      res['others'][#res['others']+1] = { ['title'] = space.label, ['windows'] = u.length(space.windows) }
+      res['others'][#res['others']+1] = { ['title'] = space.label, ['windows'] = u.length(windows) }
     end
   end
   return res
